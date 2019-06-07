@@ -1,0 +1,9 @@
+img{
+    width:100px;
+}
+a{
+    color:palevioletred;
+}
+input[type="button"]{
+    background-color: aqua;
+}
