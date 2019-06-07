@@ -1,7 +1,7 @@
 # setting up chrome browser on a desired page
 import time
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import By    
 from selenium.webdriver.common.keys import Keys
 driver = webdriver.Chrome(executable_path="C:\\chromedriver_win32\\chromedriver.exe")
 # opening chrome browser on a desired page
