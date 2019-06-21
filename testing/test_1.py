@@ -1,20 +1,48 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-chrome_options = webdriver.ChromeOptions()
+import asyncio
+
+from selenium.webdriver.support.ui import WebDriverWait
+
+from selenium.webdriver.support.ui import Select
+# chrome_options = webdriver.ChromeOptions()
 # chrome_options.add_argument('--headless')
 
-driver = webdriver.Chrome(executable_path="C:\\chromedriver_win32\\chromedriver.exe",options=chrome_options)
-driver.get("file:///C:/Users/hadas/Python/First%20Lesson/html/1%20(3).html")
-# txts = driver.find_elements_by_tag_name("input")
-# txts = [txt for txt in txts if txt.location["x"] > 0]
-# txts = [item for item in txts if item.location["x"] > 0 and item.size["width"]>200]
-# txt = driver.find_elements_by_xpath("//input[@title='חיפוש' or @title='search']")
-txt = driver.find_elements_by_xpath("//input[@type='color']")
-txt[0].send_keys("search text.")
-txt[0].send_keys(Keys.ENTER)
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+caps = DesiredCapabilities().CHROME
+caps["pageLoadStrategy"] = "none"  #  interactive
 
-driver.implicitly_wait(20) 
-txt = driver.find_elements_by_xpath("//input[@title='hgjgh' or @title='ghjghjg']")
-    
-        
+driver = webdriver.Chrome(executable_path="C:\\chromedriver_win32\\chromedriver.exe",options=chrome_options)
+driver.implicitly_wait(5)
+
+driver.get("https://buyme.co.il/") 
+
+
+# element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "app-loading-img"))
+sel = driver.find_elements_by_id("app-loading-img")
+print(sel)
+
+item = driver.find_elements_by_partial_link_text("סעדות שף")
+item[0].click()
+
+item = driver.find_elements_by_partial_link_text("בוצת מחניודה")
+item[0].click()
+
+
+# print(sel)
+# sel = driver.find_element_by_partial_link_text("סכום")
+# sel.click() 
+
+# sel = driver.find_element_by_xpath("//li[@data-option-array-index='2']")
+# sel.click() 
+
+# driver.get("https://buyme.co.il/supplier/20620")
+# elem = driver.find_elements_by_class_name("input-cash")
+# elem[0].send_keys("100")
+# btn = driver.find_element_by_xpath("//button[text()='לבחירה']")
+# btn.click()
+
+
+print(driver.title)
+      
          
