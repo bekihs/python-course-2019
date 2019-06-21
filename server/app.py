@@ -7,10 +7,13 @@ app = Flask(__name__, template_folder="static")
  
 @app.route("/")
 def index():
-    return render_template("1.html" , name="world")
-@app.route("/<name>")
-def my_name(name):
+    name = request.args.get('name')
+    if (name is None):
+        name = "world"
     return render_template("1.html" , name=name)
+# @app.route("/<name>")
+# def my_name(name):
+#     return render_template("1.html" , name=name)
 
 @app.route("/message")
 def get_messages():
