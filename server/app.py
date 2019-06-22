@@ -53,6 +53,13 @@ def user_with_name(username,lastname):
 def books():
     return jsonify(["first book" , "second Book"])
 
+@app.errorhandler(404)
+def error_page():
+    return "sorry we dont have the oage you're looking for"
+
+@app.errorhandler(500)
+def error_page(e):
+    return "oh noooo :("
 if __name__ == '__main__':
     app.run(debug=False)
 
